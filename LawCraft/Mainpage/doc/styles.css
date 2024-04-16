@@ -1,0 +1,290 @@
+/* /web/css/main.css */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(img/test.png);
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000; 
+    color: #fff; 
+    position: relative; 
+ }
+ 
+ .chat-container {
+    max-width: 80%;
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.2); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+ }
+ 
+ form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+ }
+ 
+ label {
+    font-size: 1.4em; 
+    margin-bottom: 5px;
+ }
+ 
+ textarea {
+   padding: 12px;
+   font-size: 1.3em;
+   border: 1px solid #fff;
+   border-radius: 5px;
+   background-color: rgba(255, 255, 255, 0.1);
+   color: #fff;
+   resize: vertical;
+   height: 100px;
+   width: calc(100% - 10 px); /* Adjusted width calculation */
+}
+
+ 
+ button {
+    padding: 12px 25px; 
+    font-size: 1.3em; 
+    background-color: #6a0dad;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 100px; 
+    align-self: flex-end; 
+ }
+ 
+ button:hover {
+    background-color: #490079;
+ }
+ 
+ h3 {
+    margin: 15px 0 10px;
+    font-size: 1.6em; 
+ }
+ 
+ .user-message,
+ .chatbot-message {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+ }
+ 
+ .user-message {
+    background-color: #7b52ab;
+    color: #fff;
+    align-self: flex-end;
+ }
+ 
+ .chatbot-message {
+    background-color: #3e217a;
+    color: #fff;
+    align-self: flex-start;
+ }
+ 
+ /* For responsiveness */
+ @media only screen and (max-width: 600px) {
+    .chat-container {
+        width: 90%;
+    }
+ 
+    h3 {
+        font-size: 1.4em; 
+    }
+ 
+    textarea,
+    button {
+        font-size: 1.1em; 
+    }
+ }
+ 
+ @media only screen and (max-width: 400px) {
+    .chat-container {
+        padding: 20px;
+    }
+ 
+    h3 {
+        font-size: 1.2em; 
+    }
+ 
+    textarea,
+    button {
+        font-size: 1em; 
+    }
+ }
+ 
+ /* Existing CSS */
+
+.horizontal-navbar {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   height: 50px;
+   width: 180px;
+   position: fixed;
+   top: 20px;
+   left: 10px;
+   background-color: rgba(0, 0, 0, 0.5);
+   overflow-x: auto;
+   overflow-y: hidden;
+   border-radius: 10px;
+   backdrop-filter: blur(10px);
+   box-shadow: 0 0 10px #970fff;
+}
+
+.horizontal-navbar ul {
+   display: flex;
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+}
+
+.horizontal-navbar li {
+   padding: 10px;
+}
+
+.horizontal-navbar a {
+   text-decoration: none;
+   color: #ffffff;
+   transition: background-color 0.3s ease;
+}
+
+.horizontal-navbar a:hover {
+   color: #970fff;
+}
+
+
+.popup {
+   display: none;
+   position: fixed;
+   z-index: 1;
+   left: 10px; /* Adjust this value as needed */
+   top: 80px; /* Adjust this value as needed */
+   width: 200px; /* Adjust the width as needed */
+   background-color: rgba(80 32 208 / 34%); /* Adjust the background color and opacity as needed */
+   border: 1px solid #970fff; /* Adjust the border as needed */
+   padding: 10px;
+   border-radius: 5px;
+}
+
+.popup-content {
+   color: #ffffff; /* Text color */
+}
+
+.close {
+   color: #ffffff; /* Close button color */
+   float: right;
+   font-size: 20px;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.close:hover {
+   color: #970fff; /* Close button color on hover */
+}
+
+.popup-content h2 {
+   margin-top: 0;
+}
+
+.popup-content hr {
+   border: none;
+   border-top: 1px solid #ffffff; /* Horizontal line color */
+   margin: 10px 0;
+}
+
+.popup-content button {
+   padding: 5px 10px; /* Button padding */
+   font-size: 16px; /* Button font size */
+   background-color: #ffffff; /* Button background color */
+   color: #000000; /* Button text color */
+   border: none;
+   border-radius: 3px;
+   cursor: pointer;
+}
+
+.popup-content button:hover {
+   background-color: #970fff; /* Button background color on hover */
+   color: #ffffff; /* Button text color on hover */
+}
+
+/* Add loading screen styles */
+#loading-screen {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+}
+
+#loading-spinner {
+   width: 50px;
+   height: 50px;
+}
+ .box-container {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1000; /* Ensure it's on top of other content */
+        }
+
+      .box {
+            width: 280px;
+            height: 50px;
+            background-color:  #000000; /* Inside color */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #970fff;
+            transition: background-color 0.3s ease;
+            text-align: center; /* Center text horizontally */
+            white-space: nowrap; /* Prevent text wrapping */
+            overflow: hidden; /* Hide overflow */
+            font-size:small;
+        }
+
+        .box:hover {
+            background-color: #000000; /* Darker shade on hover */
+            box-shadow: 0 0 10px #ffffff;
+        }
+
+        .container {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+     }
+     
+     .message {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 20px; /* Add margin to separate from the image */
+      display: flex; /* Use flexbox */
+      justify-content: center; /* Center horizontally */
+  }
+          /* Adjust position of "Try AI Document" button for smaller screens */
+          @media (max-width: 768px) {
+            .box-container {
+                margin-top: 300px; /* Add margin to separate from iframe */
+            }
+        }

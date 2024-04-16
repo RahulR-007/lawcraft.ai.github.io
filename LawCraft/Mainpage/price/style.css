@@ -1,0 +1,304 @@
+/* The code includes various other styles for cards, headings, bullets, and overlay effects. 
+It's a comprehensive stylesheet designed for a modern and stylish webpage. */
+
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  background-color: #000000; 
+  color: #ddd;
+}
+
+ul {
+  list-style: none;
+}
+
+.main {
+  max-width: 75rem;
+  padding: 3em 1.5em;
+}
+
+.main__heading {
+  position: relative;
+  color: transparent;
+  font-weight: 600; 
+  font-size: 2.25em;
+  margin-bottom: 0.75em;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.main__heading::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,hsl(278, 100%, 50%), hsl(278, 100%, 50%),hsl(278, 100%, 50%), hsl(334, 100%, 50%),hsl(0, 97%, 42%),hsl(0, 88%, 37%));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
+.main_h2{
+  font-weight: 400;
+  font-size: 1.25em;
+  margin-bottom: 0.30em;
+  text-align: center;
+  color: #eceff1;
+}
+
+.main_h3{
+  font-weight: 400;
+  font-size: 1.25em;
+  margin-bottom: 0.30em;
+  text-align: center;
+  color: #eceff1;
+
+}
+
+/* Styling for Cards and Bullets: */
+.cards {
+  position: relative;
+}
+
+.cards__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5em;
+}
+
+.card {
+  --flow-space: 0.5em;
+  --hsl: var(--hue), var(--saturation), var(--lightness);
+  flex: 1 1 14rem;
+  padding: 1.5em 2em;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  align-items: start;
+  gap: 1.25em;
+  color: #eceff1;
+  background-color: #000000;
+  border: 1px solid #970fff;
+  border-radius: 15px;
+}
+
+.card:nth-child(1) {
+  --hue: 165;
+  --saturation: 82.26%;
+  --lightness: 51.37%;
+}
+
+.card:nth-child(2) {
+  --hue: 291.34;
+  --saturation: 95.9%;
+  --lightness: 61.76%;
+}
+
+.card:nth-child(3) {
+  --hue: 338.69;
+  --saturation: 100%;
+  --lightness: 48.04%;
+}
+
+.card__bullets {
+  line-height: 1.4;
+}
+
+.card__bullets li::before {
+  display: inline-block;
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='16' title='check' fill='%23dddddd'%3E%3Cpath d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z' /%3E%3C/svg%3E");
+  transform: translatey(0.25ch);
+  margin-right: 1ch;
+}
+
+.card__heading {
+  font-size: 1.05em;
+  font-weight: 600;
+}
+
+.card__price {
+  font-size: 1.75em;
+  font-weight: 700;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1.25em);
+}
+
+.cta {
+  display: block;
+  align-self: end;
+  margin: 1em 0 0.5em 0;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0d0d0d;
+  padding: 0.7em;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Styling for Overlay: */
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  opacity: var(--opacity, 0);
+  -webkit-mask: radial-gradient(
+    25rem 25rem at var(--x) var(--y),
+    #000 1%,
+    transparent 50%
+  );
+  mask: radial-gradient(
+    25rem 25rem at var(--x) var(--y),
+    #000 1%,
+    transparent 50%
+  );
+  transition: 400ms mask ease;
+  will-change: mask;
+}
+
+.overlay .card {
+  background-color: hsla(var(--hsl), 0.15);
+  border-color: hsla(var(--hsl), 1);
+  box-shadow: 0 0 0 1px inset hsl(var(--hsl));
+}
+
+.overlay .cta {
+  display: block;
+  grid-row: -1;
+  width: 100%;
+  background-color: hsl(var(--hsl));
+  box-shadow: 0 0 0 1px hsl(var(--hsl));
+}
+
+:not(.overlay) > .card {
+  transition: 400ms background ease;
+  will-change: background;
+}
+
+/* Card Hover Effect: */
+:not(.overlay) > .card:hover {
+  --lightness: 95%;
+  background: hsla(var(--hsl), 0.0);
+}
+
+
+.horizontal-navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: bottom;
+  height: 50px;
+  width: 180px;
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px #970fff;
+}
+
+.horizontal-navbar ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.horizontal-navbar li {
+  padding: 10px;
+}
+
+.horizontal-navbar a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.horizontal-navbar a:hover {
+  color: #970fff;
+}
+
+.horizontal-navbar li.disabled a {
+  pointer-events: none;
+  color: #666666; /* Change color to indicate it's disabled */
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 10px; /* Adjust this value as needed */
+  top: 80px; /* Adjust this value as needed */
+  width: 200px; /* Adjust the width as needed */
+  background-color: rgba(80 32 208 / 34%); /* Adjust the background color and opacity as needed */
+  border: 1px solid #970fff; /* Adjust the border as needed */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.popup-content {
+  color: #ffffff; /* Text color */
+}
+
+.close {
+  color: #ffffff; /* Close button color */
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #970fff; /* Close button color on hover */
+}
+
+.popup-content h2 {
+  margin-top: 0;
+}
+
+.popup-content hr {
+  border: none;
+  border-top: 1px solid #ffffff; /* Horizontal line color */
+  margin: 10px 0;
+}
+
+.popup-content button {
+  padding: 5px 10px; /* Button padding */
+  font-size: 16px; /* Button font size */
+  background-color: #ffffff; /* Button background color */
+  color: #000000; /* Button text color */
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background-color: #970fff; /* Button background color on hover */
+  color: #ffffff; /* Button text color on hover */
+}
